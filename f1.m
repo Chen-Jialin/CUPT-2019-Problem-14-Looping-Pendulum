@@ -1,0 +1,21 @@
+function dy = f1(t,y)
+    M = 6 * 10^(-2);
+    m = 10^(-2);
+    g = 9.7964;
+    R = 0.01;
+    mu = 0.25;
+    e = exp(1);
+    dy = zeros(6,1);
+    theta = y(1);
+%     l1 = y(2);
+    l2 = y(3);
+    theta1 = y(4);
+%     l11 = y(5);
+    l21 = y(6);
+    dy(1) = y(4);
+    dy(2) = y(5);
+    dy(3) = y(6);
+    dy(4) = -(R*m*theta1^2 + 2*l21*theta1 - g*sin(theta))/l2;
+    dy(5) = (M*g*l2 - e^(mu*theta)*l2^2*m*theta1^2 + R^2*e^(mu*theta)*m^2*theta1^2 + 2*R*e^(mu*theta)*l21*m*theta1 - 2*e^(mu*theta)*l2*l21*m*theta1 - R*e^(mu*theta)*g*m*sin(theta) + e^(mu*theta)*g*l2*m*cos(theta) + e^(mu*theta)*g*l2*m*sin(theta) - R*e^(mu*theta)*l2*m^2*theta1^2)/(l2*(M + e^(mu*theta)*m));
+    dy(6) = (e^(mu*theta)*l2^2*m*theta1^2 - M*R*g*sin(theta) - M*g*l2 + M*R^2*m*theta1^2 + 2*M*R*l21*theta1 + 2*e^(mu*theta)*l2*l21*m*theta1 - e^(mu*theta)*g*l2*m*cos(theta) - e^(mu*theta)*g*l2*m*sin(theta) + R*e^(mu*theta)*l2*m^2*theta1^2)/(l2*(M + e^(mu*theta)*m));
+end
